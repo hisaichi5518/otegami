@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'slack-api'
 gem 'dotenv'
 gem 'ruboty'
 gem 'ruboty-cron', github: 'r7kamura/ruboty-cron'

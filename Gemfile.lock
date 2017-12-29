@@ -89,6 +89,7 @@ DEPENDENCIES
   ruboty
   ruboty-cron!
   ruboty-slack_rtm
+  slack-api
   slack-notifier
 
 BUNDLED WITH
