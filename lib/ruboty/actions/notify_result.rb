@@ -19,8 +19,9 @@ module Ruboty
             EOF
           end
 
-          res = client.create_issue("hisaichi5518/otegami", "お手紙 #{Time.now}", "#{result}")
-          @message.reply "みなさん、お手紙が届きましたよ！ #{res[:html_url]}"
+          config = ::Otegami::Config.new
+          res = client.create_issue(config.repo, "お手紙 #{Time.now}", result)
+          @message.reply "#{config.result_message} #{res[:html_url]}"
         end
       end
 
@@ -31,11 +32,6 @@ module Ruboty
 
       def groups
         data[:groups] ||= []
-      end
-
-      def saveMessage(name, body)
-        messages = data[:messages] ||= {}
-        messages[name] = body
       end
 
       def messages

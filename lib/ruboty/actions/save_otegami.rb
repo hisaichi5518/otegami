@@ -14,7 +14,7 @@ module Ruboty
           return
         end
 
-        save_message(@message.from_name, @message.body)
+        save_message(@message.from_name)
 
         p client.chat_postMessage(
           channel: "@#{@message.from_name}",
@@ -22,10 +22,10 @@ module Ruboty
           as_user: true,
           attachments: [
             {
-              "fallback": "「#{@message[:otegami]}」",
+              "fallback": "「#{body}}」",
               "color": "#36a64f",
               "author_name": @message.from_name,
-              "text": @message[:otegami],
+              "text": body,
               "footer": "お手紙bot"
             }
           ]
@@ -37,11 +37,15 @@ module Ruboty
         @client ||= Slack::Client.new
       end
 
+      def body
+        @message[:otegami]
+      end
+
       def groups
         @groups ||= ::Otegami::Groups.new(data[:groups] ||= [])
       end
 
-      def save_message(name, body)
+      def save_message(name)
         messages = data[:messages] ||= {}
         messages[name] = body
       end

@@ -1,3 +1,4 @@
+require 'otegami/config'
 require 'otegami/group'
 require 'otegami/groups'
 

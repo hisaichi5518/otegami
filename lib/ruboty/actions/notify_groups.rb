@@ -1,4 +1,3 @@
-require 'yaml'
 require 'slack'
 
 module Ruboty
@@ -9,13 +8,14 @@ module Ruboty
       end
 
       def call
-        yaml = ::YAML.load_file(".otegami.yml")
-        yaml["members"].shuffle!
+        config = ::Otegami::Config.new
+
+        config.members.shuffle!
 
         raw_groups = data[:groups] = []
 
-        while yaml["members"].size > 0 do
-          group = yaml["members"].slice!(0, 2)
+        while config.members.size > 0 do
+          group = config.members.slice!(0, 2)
           if group.size == 1
             if raw_groups[-1].nil?
               # グループに1人しかいないけど、グループがないということは
