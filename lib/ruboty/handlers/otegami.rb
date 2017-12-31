@@ -5,7 +5,7 @@ module Ruboty
     class Otegami < Base
       on(
         /.*/,
-        description: 'お言葉を受け取ります',
+        description: 'お手紙を受け取ります',
         name: 'otegami',
         all: true
       )

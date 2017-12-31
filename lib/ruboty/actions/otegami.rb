@@ -32,7 +32,7 @@ module Ruboty
 
         p client.chat_postMessage(
           channel: "@#{@message.from_name}",
-          text: "#{group.opponent(@message.from_name)}さんへのお言葉を保存しました！編集したい場合は、また投稿してね",
+          text: "#{group.opponent(@message.from_name)}さんへのお手紙を保存しました！編集したい場合は、また投稿してね",
           as_user: true,
           attachments: [
             {
@@ -40,7 +40,7 @@ module Ruboty
               "color": "#36a64f",
               "author_name": @message.from_name,
               "text": @message.body,
-              "footer": "お言葉bot"
+              "footer": "お手紙bot"
             }
           ]
         )
