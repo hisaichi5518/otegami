@@ -1,17 +1,17 @@
-require 'ruboty/actions/okotoba'
+require 'ruboty/actions/otegami'
 
 module Ruboty
   module Handlers
-    class Okotoba < Base
+    class Otegami < Base
       on(
         /.*/,
         description: 'お言葉を受け取ります',
-        name: 'okotoba',
+        name: 'otegami',
         all: true
       )
 
-      def okotoba(message)
-        Ruboty::Actions::Okotoba.new(message).call
+      def otegami(message)
+        Ruboty::Actions::Otegami.new(message).call
       end
     end
   end

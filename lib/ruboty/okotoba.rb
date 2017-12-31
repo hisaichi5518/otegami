@@ -1,5 +1,5 @@
-require 'okotoba/group'
-require 'okotoba/groups'
+require 'otegami/group'
+require 'otegami/groups'
 
-require 'ruboty/okotoba/version'
-require 'ruboty/handlers//okotoba'
+require 'ruboty/otegami/version'
+require 'ruboty/handlers/otegami'

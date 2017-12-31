@@ -1,5 +1,5 @@
 module Ruboty
-  module Okotoba
+  module Otegami
     VERSION = "0.0.1"
   end
 end

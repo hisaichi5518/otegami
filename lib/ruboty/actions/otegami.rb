@@ -7,7 +7,7 @@ end
 
 module Ruboty
   module Actions
-    class Okotoba < Base
+    class Otegami < Base
       def initialize(message)
         @message = message
       end
@@ -17,7 +17,7 @@ module Ruboty
           return
         end
 
-        groups.push(::Okotoba::Group.new(["hisaichi5519", "hisaichi5518"]))
+        groups.push(::Otegami::Group.new(["hisaichi5519", "hisaichi5518"]))
 
         group = groups.find(@message.from_name)
 
@@ -44,8 +44,8 @@ module Ruboty
 
       def groups
         # [{members: ["hisaichi5518", "hisaichi5519"], hisaichi5518: "", ...}, ...]
-        raw_groups = @message.robot.brain.data[:okotoba__groups] ||= []
-        @groups ||= ::Okotoba::Groups.new(raw_groups)
+        raw_groups = @message.robot.brain.data[:otegami__groups] ||= []
+        @groups ||= ::Otegami::Groups.new(raw_groups)
       end
     end
   end
