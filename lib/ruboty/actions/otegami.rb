@@ -17,9 +17,18 @@ module Ruboty
           return
         end
 
-        groups.push(::Otegami::Group.new(["hisaichi5519", "hisaichi5518"]))
+        # 本来はBrainから取得する
+        groups.push(::Otegami::Group.new({
+          "members" => ["hisaichi5519", "hisaichi5518"],
+        }))
 
         group = groups.find(@message.from_name)
+        if group.nil?
+          @message.reply "グループが見つかりませんでした"
+          return
+        end
+
+        saveMessage(@message.from_name, @message.body)
 
         p client.chat_postMessage(
           channel: "@#{@message.from_name}",
@@ -44,8 +53,17 @@ module Ruboty
 
       def groups
         # [{members: ["hisaichi5518", "hisaichi5519"], hisaichi5518: "", ...}, ...]
-        raw_groups = @message.robot.brain.data[:otegami__groups] ||= []
+        raw_groups = data[:groups] ||= []
         @groups ||= ::Otegami::Groups.new(raw_groups)
+      end
+
+      def saveMessage(name, body)
+        messages = data[:messages] ||= {}
+        messages[name] = body
+      end
+
+      def data
+        @message.robot.brain.data[:otegami] ||= {}
       end
     end
   end
