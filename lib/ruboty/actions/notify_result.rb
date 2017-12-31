@@ -1,5 +1,3 @@
-require 'slack'
-
 module Ruboty
   module Actions
     class NotifyResult < Base
@@ -8,7 +6,6 @@ module Ruboty
       end
 
       def call
-
         groups.each do |members|
           group = ::Otegami::Group.new(members)
           members.each do |member|
@@ -18,14 +15,11 @@ module Ruboty
             p member + "より"
           end
 
+          @message.reply "こんな感じでした！"
         end
       end
 
       private
-      def client
-        @client ||= Slack::Client.new
-      end
-
       def groups
         data[:groups] ||= []
       end

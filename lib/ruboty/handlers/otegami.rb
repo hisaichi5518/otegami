@@ -23,12 +23,6 @@ module Ruboty
         name: 'notify_result',
       )
 
-      on(
-        /dump/,
-        description: 'dump for debug',
-        name: 'dump',
-      )
-
       def otegami(message)
         Ruboty::Actions::SaveOtegami.new(message).call
       end
@@ -39,10 +33,6 @@ module Ruboty
 
       def notify_result(message)
         Ruboty::Actions::NotifyResult.new(message).call
-      end
-
-      def dump(message)
-        message.reply message.robot.brain.data[:otegami] ||= {}
       end
     end
   end

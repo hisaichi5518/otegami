@@ -20,7 +20,8 @@ module Ruboty
             if raw_groups[-1].nil?
               # グループに1人しかいないけど、グループがないということは
               # 1人しか設定されていないということ
-              p "最後のグループがないです"
+              @message.reply "メンバーが1人しか設定されていません"
+              return
             else
               # 人間が余っていたら最後のグループに追加する
               raw_groups[-1] |= group

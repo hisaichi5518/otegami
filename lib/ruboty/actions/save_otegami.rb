@@ -8,16 +8,13 @@ module Ruboty
       end
 
       def call
-        # 本来はBrainから取得する
-        groups.push(::Otegami::Group.new(["hisaichi5519", "hisaichi5518"]))
-
         group = groups.find(@message.from_name)
         if group.nil?
-          @message.reply "今回は、お手紙を送る相手がいません…"
+          @message.reply "今回はお手紙を送る相手がいません…"
           return
         end
 
-        saveMessage(@message.from_name, @message.body)
+        save_message(@message.from_name, @message.body)
 
         p client.chat_postMessage(
           channel: "@#{@message.from_name}",
@@ -25,7 +22,7 @@ module Ruboty
           as_user: true,
           attachments: [
             {
-              "fallback": "Required plain-text summary of the attachment.",
+              "fallback": "「#{@message[:otegami]}」",
               "color": "#36a64f",
               "author_name": @message.from_name,
               "text": @message[:otegami],
@@ -41,12 +38,10 @@ module Ruboty
       end
 
       def groups
-        # [{members: ["hisaichi5518", "hisaichi5519"], hisaichi5518: "", ...}, ...]
-        raw_groups = data[:groups] ||= []
-        @groups ||= ::Otegami::Groups.new(raw_groups)
+        @groups ||= ::Otegami::Groups.new(data[:groups] ||= [])
       end
 
-      def saveMessage(name, body)
+      def save_message(name, body)
         messages = data[:messages] ||= {}
         messages[name] = body
       end
