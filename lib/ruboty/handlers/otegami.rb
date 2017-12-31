@@ -10,8 +10,18 @@ module Ruboty
         all: true
       )
 
+      on(
+        /dump/,
+        description: 'dump for debug',
+        name: 'dump',
+      )
+
       def otegami(message)
         Ruboty::Actions::Otegami.new(message).call
+      end
+
+      def dump(message)
+        message.reply message.robot.brain.data[:otegami]
       end
     end
   end
