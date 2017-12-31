@@ -1,0 +1,51 @@
+require 'slack'
+
+Slack.configure do |config|
+  config.token = ENV["SLACK_TOKEN"]
+end
+
+module Ruboty
+  module Actions
+    class NotifyResult < Base
+      def initialize(message)
+        @message = message
+      end
+
+      def call
+
+        groups.each do |members|
+          group = ::Otegami::Group.new(members)
+          members.each do |member|
+            # TODO: Github に投稿する
+            p group.opponent(member) + "さんへ"
+            p messages[member]
+            p member + "より"
+          end
+
+        end
+      end
+
+      private
+      def client
+        @client ||= Slack::Client.new
+      end
+
+      def groups
+        data[:groups] ||= []
+      end
+
+      def saveMessage(name, body)
+        messages = data[:messages] ||= {}
+        messages[name] = body
+      end
+
+      def messages
+        data[:messages] ||= {}
+      end
+
+      def data
+        @message.robot.brain.data[:otegami] ||= {}
+      end
+    end
+  end
+end

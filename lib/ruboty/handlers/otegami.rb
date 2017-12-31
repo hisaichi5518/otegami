@@ -1,5 +1,6 @@
 require 'ruboty/actions/save_otegami'
 require 'ruboty/actions/notify_groups'
+require 'ruboty/actions/notify_result'
 
 module Ruboty
   module Handlers
@@ -17,6 +18,12 @@ module Ruboty
       )
 
       on(
+        /notify result/,
+        description: '結果を通知します',
+        name: 'notify_result',
+      )
+
+      on(
         /dump/,
         description: 'dump for debug',
         name: 'dump',
@@ -28,6 +35,10 @@ module Ruboty
 
       def notify_groups(message)
         Ruboty::Actions::NotifyGroups.new(message).call
+      end
+
+      def notify_result(message)
+        Ruboty::Actions::NotifyResult.new(message).call
       end
 
       def dump(message)
