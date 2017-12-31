@@ -32,8 +32,6 @@ module Ruboty
 
           send_message(group)
         end
-
-        @message.reply data
       end
 
       private
