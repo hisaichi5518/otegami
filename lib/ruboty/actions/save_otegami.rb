@@ -7,7 +7,7 @@ end
 
 module Ruboty
   module Actions
-    class Otegami < Base
+    class SaveOtegami < Base
       def initialize(message)
         @message = message
       end

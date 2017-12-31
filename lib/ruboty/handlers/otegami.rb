@@ -1,4 +1,4 @@
-require 'ruboty/actions/otegami'
+require 'ruboty/actions/save_otegami'
 
 module Ruboty
   module Handlers
@@ -16,7 +16,7 @@ module Ruboty
       )
 
       def otegami(message)
-        Ruboty::Actions::Otegami.new(message).call
+        Ruboty::Actions::SaveOtegami.new(message).call
       end
 
       def dump(message)
