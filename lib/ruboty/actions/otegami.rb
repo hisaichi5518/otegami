@@ -13,10 +13,6 @@ module Ruboty
       end
 
       def call
-        if @message.from_name == "testapp"
-          return
-        end
-
         # 本来はBrainから取得する
         groups.push(::Otegami::Group.new({
           "members" => ["hisaichi5519", "hisaichi5518"],
