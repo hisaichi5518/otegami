@@ -10,7 +10,7 @@ module Ruboty
       )
 
       on(
-        /debug dump/,
+        /dump/,
         description: 'dump for debug',
         name: 'dump',
       )
