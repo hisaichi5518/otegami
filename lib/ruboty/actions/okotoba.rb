@@ -17,10 +17,13 @@ module Ruboty
           return
         end
 
+        groups.push(::Okotoba::Group.new(["hisaichi5519", "hisaichi5518"]))
+
+        group = groups.find(@message.from_name)
 
         p client.chat_postMessage(
           channel: "@#{@message.from_name}",
-          text: 'ほげほげさんへのお言葉、保存しました！編集したい場合は、また投稿してね',
+          text: "#{group.opponent(@message.from_name)}さんへのお言葉を保存しました！編集したい場合は、また投稿してね",
           as_user: true,
           attachments: [
             {
@@ -37,6 +40,12 @@ module Ruboty
       private
       def client
         @client ||= Slack::Client.new
+      end
+
+      def groups
+        # [{members: ["hisaichi5518", "hisaichi5519"], hisaichi5518: "", ...}, ...]
+        raw_groups = @message.robot.brain.data[:okotoba__groups] ||= []
+        @groups ||= ::Okotoba::Groups.new(raw_groups)
       end
     end
   end
