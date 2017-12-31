@@ -7,7 +7,7 @@ module Ruboty
     class Otegami < Base
       on(
         /save (?<otegami>.*)/,
-        description: 'お手紙を受け取ります',
+        description: 'お手紙を保存します',
         name: 'otegami',
       )
 
@@ -19,7 +19,7 @@ module Ruboty
 
       on(
         /notify result/,
-        description: '結果を通知します',
+        description: 'お手紙を通知します',
         name: 'notify_result',
       )
 
