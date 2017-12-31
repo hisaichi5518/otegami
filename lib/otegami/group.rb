@@ -1,8 +1,8 @@
 module Otegami
   class Group
 
-    def initialize(raw_group)
-      @raw_group = raw_group
+    def initialize(members)
+      @members = members
     end
 
     def include?(name)
@@ -27,7 +27,7 @@ module Otegami
 
     private
     def members
-      @raw_group["members"] ||= []
+      @members ||= []
     end
   end
 end

@@ -14,9 +14,7 @@ module Ruboty
 
       def call
         # 本来はBrainから取得する
-        groups.push(::Otegami::Group.new({
-          "members" => ["hisaichi5519", "hisaichi5518"],
-        }))
+        groups.push(::Otegami::Group.new(["hisaichi5519", "hisaichi5518"]))
 
         group = groups.find(@message.from_name)
         if group.nil?

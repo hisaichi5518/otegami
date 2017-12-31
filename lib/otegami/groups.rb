@@ -3,7 +3,7 @@ module Otegami
 
     def initialize(raw_groups)
       raw_groups.each do |raw_group|
-        groups.add(Group.new(raw_group))
+        groups.push(Group.new(raw_group))
       end
     end
 
