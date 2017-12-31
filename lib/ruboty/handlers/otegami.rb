@@ -11,7 +11,7 @@ module Ruboty
       )
 
       on(
-        /dump/,
+        /debug dump/,
         description: 'dump for debug',
         name: 'dump',
       )
@@ -21,7 +21,7 @@ module Ruboty
       end
 
       def dump(message)
-        message.reply message.robot.brain.data[:otegami]
+        message.reply message.robot.brain.data[:otegami] ||= {}
       end
     end
   end
