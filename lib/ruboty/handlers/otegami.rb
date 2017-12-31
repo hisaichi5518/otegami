@@ -4,10 +4,9 @@ module Ruboty
   module Handlers
     class Otegami < Base
       on(
-        /.*/,
+        /save (?<otegami>.*)/,
         description: 'お手紙を受け取ります',
         name: 'otegami',
-        all: true
       )
 
       on(

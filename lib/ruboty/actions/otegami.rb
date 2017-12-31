@@ -39,7 +39,7 @@ module Ruboty
               "fallback": "Required plain-text summary of the attachment.",
               "color": "#36a64f",
               "author_name": @message.from_name,
-              "text": @message.body,
+              "text": @message[:otegami],
               "footer": "お手紙bot"
             }
           ]
