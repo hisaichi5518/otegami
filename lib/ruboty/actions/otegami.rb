@@ -20,7 +20,7 @@ module Ruboty
 
         group = groups.find(@message.from_name)
         if group.nil?
-          @message.reply "グループが見つかりませんでした"
+          @message.reply "今回は、お手紙を送る相手がいません…"
           return
         end
 
