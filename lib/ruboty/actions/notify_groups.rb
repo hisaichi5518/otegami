@@ -1,10 +1,6 @@
 require 'yaml'
 require 'slack'
 
-Slack.configure do |config|
-  config.token = ENV["SLACK_TOKEN"]
-end
-
 module Ruboty
   module Actions
     class NotifyGroups < Base
