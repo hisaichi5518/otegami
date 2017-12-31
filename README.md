@@ -1,1 +1,1 @@
-# okimochi
+# otegami
