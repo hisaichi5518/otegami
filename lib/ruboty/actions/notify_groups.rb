@@ -47,7 +47,7 @@ module Ruboty
         group.each do |member|
           p client.chat_postMessage(
             channel: "@#{member}",
-            text: "今月は、 @#{::Otegami::Group.new(group).opponent(member)} さんにお手紙を送ってください！",
+            text: "今月は、 @#{::Otegami::Group.new(group).opponent(member)} さんにお手紙を送ってください！お手紙はこのbotへのDMで受け付けています。",
             as_user: true,
           )
         end
