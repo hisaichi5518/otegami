@@ -11,11 +11,17 @@ module Ruboty
           result = ""
           members.each do |member|
             result += <<-"EOF"
-@#{member} →@#{group.opponent(member)}
+| 差出人 || 受取人 |
+|:--|:--|:--|
+| ![](https://git.pepabo.com/#{member}.png?size=100) | -> | ![](https://git.pepabo.com/#{group.opponent(member)}.png?size=100)  |
+| @#{member} | -> | @#{group.opponent(member)}  |
+
+
 ```
 #{messages[member]}
 ```
 ---
+
             EOF
           end
 
